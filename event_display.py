@@ -24,9 +24,6 @@ Error Handling:
 
 Dependencies:
 -------------
-- numpy
-- matplotlib
-- ROOT
 - my_package (contains `elec_branches`, `detsim_branches`, and `useful_function`)
 
 Instructions:
