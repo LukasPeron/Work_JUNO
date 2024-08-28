@@ -3,12 +3,10 @@
 
 Loading ELECSIM Files, Trees, and Branches
 
-This script provides utility functions for loading ROOT files, extracting trees, and retrieving branches and attributes
-from the ELECSIM simulation data. It is designed to streamline the process of working with ELECSIM data by providing
-simple and reusable functions.
+This script provides utility functions for loading ROOT files, extracting trees, and retrieving branches and attributes from the ELECSIM simulation data. It is designed to streamline the process of working with ELECSIM data by providing simple and reusable functions.
 
 Created by: Lukas Péron
-Last Update: 22/08/2024
+Last Update: 01/09/2024
 
 Overview:
 ---------
@@ -35,7 +33,7 @@ Instructions:
 3. Use `load_branches` and `load_attributes` to extract the necessary data from the tree.
 """
 
-from ROOT import *
+import ROOT as rt
 
 def load_file(number):
     """
@@ -55,8 +53,9 @@ def load_file(number):
     -------
     RuntimeError
         If the file cannot be opened or is corrupted (zombie file).
+        /sps/atlas/s/stark/pourLukas2/Fornax_2021/elecsim/all/
     """
-    file = TFile.Open(f"/sps/atlas/s/stark/pourLukas2/Fornax_2021/elecsim/all/OutElec_Fornax2021_{number}.root")
+    file = rt.TFile.Open(f"/media/lukas/427bb08d-0053-419c-954a-9cce676cd9ec/JUNO/work_JUNO/data_files/OutElec_Fornax2021_{number}.root")
     if not file or file.IsZombie():
         raise RuntimeError(f"Error: Could not open the file OutElec_Fornax2021_{number}.root.")
     else:

@@ -3,12 +3,10 @@
 
 Loading DETSIM Files, Trees, and Branches
 
-This script provides utility functions for loading ROOT files, extracting trees, and retrieving branches and attributes
-from the DETSIM simulation data. It includes error handling to ensure that the file and tree loading processes work
-as expected.
+This script provides utility functions for loading ROOT files, extracting trees, and retrieving branches and attributes from the DETSIM simulation data. It includes error handling to ensure that the file and tree loading processes work as expected.
 
 Created by: Lukas Péron
-Last Update: 22/08/2024
+Last Update: 01/09/2024
 
 Overview:
 ---------
@@ -35,7 +33,7 @@ Instructions:
 3. Use `load_branches` and `load_attributes` to extract the necessary data from the tree.
 """
 
-from ROOT import *
+import ROOT as rt
 
 def load_file(number):
     """
@@ -55,8 +53,9 @@ def load_file(number):
     -------
     RuntimeError
         If the file cannot be opened or is corrupted (zombie file).
+        /sps/atlas/s/stark/pourLukas2/Fornax_2021/detsim/all/
     """
-    file = TFile.Open(f"/sps/atlas/s/stark/pourLukas2/Fornax_2021/detsim/all/user-detsim-Fornax2021_27Msun_40kpc_NMO_J23.1-{number}.root")
+    file = rt.TFile.Open(f"/media/lukas/427bb08d-0053-419c-954a-9cce676cd9ec/JUNO/work_JUNO/data_files/user-detsim-Fornax2021_27Msun_40kpc_NMO_J23.1-{number}.root")
     if not file or file.IsZombie():
         raise RuntimeError(f"Error: Could not open the file user-detsim-Fornax2021_27Msun_40kpc_NMO_J23.1-{number}.root.")
     else:
